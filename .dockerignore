@@ -1,0 +1,10 @@
+*
+!requirements.txt
+!app.py
+!core.py
+!mcp_server.py
+!index.html
+!styles.css
+!app.js
+!deploy/
+!deploy/Dockerfile

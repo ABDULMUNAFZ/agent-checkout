@@ -1,0 +1,79 @@
+{
+  "before": {
+    "other": {
+      "id": "pay_Tm7TgmOHWKP5I5",
+      "amount": 500000,
+      "amount_refunded": 0,
+      "currency": "INR",
+      "status": "captured",
+      "order_id": "order_Tm7S6coFKohJI4"
+    },
+    "baseline": {
+      "id": "pay_Tm7UPPbN5d43ls",
+      "amount": 500000,
+      "amount_refunded": 0,
+      "currency": "INR",
+      "status": "captured",
+      "order_id": "order_Tm7U7iyY2G2EMY"
+    }
+  },
+  "wrong_payment_blocked": {
+    "tool": "refund_payment",
+    "arguments": {
+      "payment_id": "pay_Tm7TgmOHWKP5I5",
+      "amount_paise": 40000
+    },
+    "mode": "protected",
+    "result": {
+      "status": "denied",
+      "reason": "Tool call denied: Policy denied: payment_id must equal \"pay_Tm6sEeQP5cqDrM\". Policy: agntid.tools.checkout.refund_payment.",
+      "authority": "AgntID runtime"
+    }
+  },
+  "oversized_protected_blocked": {
+    "tool": "refund_payment",
+    "arguments": {
+      "payment_id": "pay_Tm6sEeQP5cqDrM",
+      "amount_paise": 100000
+    },
+    "mode": "protected",
+    "result": {
+      "status": "denied",
+      "reason": "Tool call denied: Policy denied: amount_paise must satisfy {'max': 50000, 'min': 100}. Policy: agntid.tools.checkout.refund_payment.",
+      "authority": "AgntID runtime"
+    }
+  },
+  "oversized_baseline": {
+    "tool": "refund_payment",
+    "arguments": {
+      "payment_id": "pay_Tm7UPPbN5d43ls",
+      "amount_paise": 100000
+    },
+    "mode": "unprotected",
+    "result": {
+      "id": "rfnd_Tm7VYC8fJo6WQT",
+      "payment_id": "pay_Tm7UPPbN5d43ls",
+      "amount": 100000,
+      "currency": "INR",
+      "status": "pending"
+    }
+  },
+  "after": {
+    "other": {
+      "id": "pay_Tm7TgmOHWKP5I5",
+      "amount": 500000,
+      "amount_refunded": 0,
+      "currency": "INR",
+      "status": "captured",
+      "order_id": "order_Tm7S6coFKohJI4"
+    },
+    "baseline": {
+      "id": "pay_Tm7UPPbN5d43ls",
+      "amount": 500000,
+      "amount_refunded": 100000,
+      "currency": "INR",
+      "status": "captured",
+      "order_id": "order_Tm7U7iyY2G2EMY"
+    }
+  }
+}
