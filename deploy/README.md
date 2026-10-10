@@ -1,8 +1,8 @@
 # AWS deployment
 
-Live operator workspace: https://abdul.runs-on.dev
+Live public TEST demo: https://abdul.runs-on.dev
 
-RefundGuard runs on an Amazon Linux EC2 instance in Mumbai with Docker Compose. Caddy provides HTTPS and operator authentication. Only ports 80 and 443 are public. The AgntID runtime UI and MCP proxy bind to loopback; the Razorpay TEST MCP service stays inside Docker. Administration uses AWS Systems Manager.
+RefundGuard runs on an Amazon Linux EC2 instance in Mumbai with Docker Compose. Caddy provides HTTPS. The public TEST demo opens without a password, as requested. Only ports 80 and 443 are public. The AgntID runtime UI and MCP proxy bind to loopback; the Razorpay TEST MCP service stays inside Docker. Administration uses AWS Systems Manager.
 
 ## Deploy from source
 
@@ -19,8 +19,8 @@ Stop the old runtime before transferring its identity and persistent config/data
 
 ## Verified on October 10, 2026
 
-HTTPS and authenticated assets/API return successfully. AgntID governed payment lookup works. The saved 40000-paise proposal produced a Razorpay TEST refund receipt. Identical request retries return the same result; a new attempt on that proposal is rejected. A 100000-paise normal refund and another payment lookup are denied by AgntID. Hosted advanced replay returns 403. Persistent state survives app restart.
+HTTPS and public assets/API return successfully. AgntID governed payment lookup works. The saved 40000-paise proposal produced a Razorpay TEST refund receipt. Identical request retries return the same result; a new attempt on that proposal is rejected. A 100000-paise normal refund and another payment lookup are denied by AgntID. Hosted advanced replay returns 403. Persistent state survives app restart.
 
-This is a single-operator TEST deployment. Provider acceptance can initially be pending; uncertain outcomes require manual reconciliation. Customer identity in the example is simulated. Multi-tenant authentication, webhook reconciliation and production payment operations are not implemented.
+This is a public TEST demo. Anyone with the URL can access the demo and its TEST workflow. Provider acceptance can initially be pending; uncertain outcomes require manual reconciliation. Customer identity in the example is simulated. Multi-tenant authentication, webhook reconciliation and production payment operations are not implemented.
 
 The credit-funded EC2 deployment has a seven-day shutdown timer for October 17, 2026 at 15:27 IST. The current instance costs approximately $0.08479/hour for compute, with storage and public IPv4 additional. Stopped instances retain billable EBS storage. A monthly $45 budget tracker is configured; email alerts are not configured. Renewing hosting requires reviewing remaining credits and the shutdown timer. Auto-assigned public IPv4 can change after stop/start, requiring a DNS update.

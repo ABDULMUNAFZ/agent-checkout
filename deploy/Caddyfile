@@ -1,7 +1,4 @@
 {$PUBLIC_HOST} {
-    basic_auth {
-        {$OPERATOR_USER} {$OPERATOR_PASSWORD_HASH}
-    }
     header {
         X-Content-Type-Options nosniff
         Referrer-Policy same-origin
