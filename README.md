@@ -1,5 +1,7 @@
 <div align="center">
 
+<img src="assets/agent-checkout-logo.png" alt="Agent Checkout robot, security shield and refund card" width="110">
+
 ![Agent Checkout: helpful AI, precise authority](docs/assets/hero.svg)
 
 # Agent Checkout

@@ -14,7 +14,8 @@ from openai import AsyncOpenAI
 from starlette.applications import Starlette
 from starlette.requests import Request
 from starlette.responses import JSONResponse, FileResponse
-from starlette.routing import Route
+from starlette.routing import Route, Mount
+from starlette.staticfiles import StaticFiles
 from starlette.middleware.trustedhost import TrustedHostMiddleware
 from starlette.middleware import Middleware
 from core import ROOT, config, db, digest, record, razorpay, TOOLS, RUN_ID, get_payment
@@ -273,8 +274,9 @@ async def api(request):
 
 async def script(request):return FileResponse(ROOT/'app.js',media_type='text/javascript')
 async def style(request):return FileResponse(ROOT/'styles.css',media_type='text/css')
+async def favicon(request):return FileResponse(ROOT/'assets/favicon.ico',media_type='image/x-icon')
 
-app=Starlette(middleware=[Middleware(TrustedHostMiddleware,allowed_hosts=['localhost','127.0.0.1','testserver']+([PUBLIC_ORIGIN.split('://',1)[-1]] if PUBLIC_ORIGIN else []))],routes=[Route('/',index),Route('/app.js',script),Route('/styles.css',style),Route('/api/state',state),Route('/api/{action}',api,methods=['POST'])])
+app=Starlette(middleware=[Middleware(TrustedHostMiddleware,allowed_hosts=['localhost','127.0.0.1','testserver']+([PUBLIC_ORIGIN.split('://',1)[-1]] if PUBLIC_ORIGIN else []))],routes=[Mount('/assets',app=StaticFiles(directory=ROOT/'assets'),name='assets'),Route('/favicon.ico',favicon),Route('/',index),Route('/app.js',script),Route('/styles.css',style),Route('/api/state',state),Route('/api/{action}',api,methods=['POST'])])
 if __name__=='__main__':
     import uvicorn
     uvicorn.run(app,host=os.getenv('BIND_HOST','127.0.0.1'),port=8090)

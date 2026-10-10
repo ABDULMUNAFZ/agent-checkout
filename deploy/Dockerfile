@@ -4,6 +4,7 @@ WORKDIR /app
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 COPY app.py core.py mcp_server.py index.html styles.css app.js ./
+COPY assets ./assets
 RUN useradd --uid 10001 --create-home refundguard && mkdir /data && chown refundguard /data
 USER refundguard
 CMD ["python", "app.py"]

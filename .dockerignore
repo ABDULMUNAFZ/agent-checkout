@@ -8,3 +8,5 @@
 !app.js
 !deploy/
 !deploy/Dockerfile
+!assets/
+!assets/**
