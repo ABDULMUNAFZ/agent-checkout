@@ -48,6 +48,9 @@ services:
     build:
       context: ..
       dockerfile: deploy/Dockerfile
+    networks:
+      default:
+        aliases: [host.docker.internal]
     command: ["python", "mcp_server.py"]
     restart: unless-stopped
     env_file: .env

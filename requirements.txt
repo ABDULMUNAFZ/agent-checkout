@@ -1,4 +1,4 @@
-agntid[openai] @ git+https://github.com/AGNTID-AI/agntid-python.git@f4fcd2fe476f0c4dcf800e498530b7042b830f6b
+agntid-sdk[openai] @ git+https://github.com/AGNTID-AI/agntid-python.git@f4fcd2fe476f0c4dcf800e498530b7042b830f6b
 fastmcp==2.14.7
 openai==2.54.0
 httpx==0.28.1
